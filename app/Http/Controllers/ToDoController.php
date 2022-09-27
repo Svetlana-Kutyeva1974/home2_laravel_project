@@ -17,41 +17,13 @@ class ToDoController extends Controller
      */
     public function index()
     {
-        //$todo = ToDo::paginate(1);
         $todo = ToDo::all();
-        dump("Отладочная инфо : ".$todo);
-        foreach($todo as $todoEl) {
+        dump("Отладочная информация : ".$todo);
+        /*foreach($todo as $todoEl) {
             dump($todoEl->title,$todoEl->description, $todoEl->id );
-            //dd($todoEl->description);
-            //dd($todoEl->id);
-    }
-        //return view( 'todo.todo', $todo);
+        }*/
          return view('todo.todo', compact('todo'));
-        //return view('todo', compact('todo'));//['todo'=>$todo]
 
-       /*$params = array(
-            'id' => 1,
-            'title' => 'Новая задача',
-            'description' => 'Описание задачи…',
-            'created_at' => '2022-01-17 19:19:47',
-            'updated_at' => '2022-01-17 19:19:47',
-        );
-        */
-        //return view( 'todo.todo', $params);
-
-
-/*
-        $todos = ToDo::paginate(1);
-        $todos = App/Models/ToDo::paginate();
-
-        $todos = DB::table('to_dos')->paginate();
-
-       return view(
-            'todo.todo',
-            [
-                'todos' => $todos
-            ]
-        );*/
     }
 
     /**
@@ -62,13 +34,11 @@ class ToDoController extends Controller
     public function create()
     {
         Todo::create([
-            'id' => '2',
             'title' => 'Новая задача',
             'description' => 'Описание задачи ...',
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
         ]);
-
         return redirect()->back();
     }
 
@@ -97,7 +67,6 @@ class ToDoController extends Controller
                  'var1' => 'Мы едем, едем, едем.',
                  'var2' => 'В далекие края...',
               );
-        //$param = request->all();
         return view('example.example', $params);
     }
 

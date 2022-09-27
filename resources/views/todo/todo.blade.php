@@ -23,14 +23,21 @@
 
 <body>
 {{-- Шаблон Blade --}}
-Показ строки таблицы<br><br>
+<div style="width: 500px; margin: 50px auto 0;">
+Показ строки таблицы. Пример<br><br>
 ID: {{ $todo[0]->id}}<br>
 Заголовок:{{ $todo[0]->title}}<br>
 Описание задачи: {{ $todo[0]->description }}<br>
 Дата создания: {{ $todo[0]->created_at }}<br>
 Дата изменения: {{ $todo[0]->updated_at }}
-
-@foreach ($todo as $key => $el)
-    <div>Ключ: {{ $key }}, значение: {{ $el }}</div>
+<div style="width: 500px; margin: 50px auto 0; border: 2px solid;">
+    СПИСОК ДЕЛ:
+@foreach($todo as $todoIt)
+            <div>ID : {{ $todoIt->id}}</div><br>
+    <div>Заголовок:{{ $todoIt->title}}</div><br>
+    <div>Описание задачи: {{ $todoIt->description }}</div><br>
+    <div>Дата создания: {{ $todoIt->created_at }}</div><br>
+    <div>Дата изменения: {{ $todoIt->updated_at }}</div>
+            <hr style="color: #333; border: 1px solid;">
 @endforeach
 </body>

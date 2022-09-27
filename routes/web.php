@@ -19,6 +19,6 @@ Route::get('/', function () {
 
 Route::get('/', [\App\Http\Controllers\ToDoController::class, 'index']);
 Route::get('/todo', [\App\Http\Controllers\ToDoController::class, 'index']);
-//Route::get('/todo/create', [\App\Http\Controllers\ToDoController::class, 'index']);
 Route::get('/example', [\App\Http\Controllers\ToDoController::class, 'show']);
+Route::get('/todo/create', [\App\Http\Controllers\ToDoController::class, 'create']);
 Route::get('/todo/{id}', [\App\Http\Controllers\ToDoController::class, 'find']);

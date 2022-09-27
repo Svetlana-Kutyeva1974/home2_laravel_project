@@ -1,3 +1,4 @@
+<title>Просмотр элемента</title>
 <div style="width: 250px; margin: 150px auto 0;">
     Список дел:<br/>
 
