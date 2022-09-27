@@ -16,4 +16,5 @@ class ToDo extends Model
         'created_at',
         'updated_at',
     ];
+
 }

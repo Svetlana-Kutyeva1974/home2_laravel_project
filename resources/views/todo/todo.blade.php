@@ -22,10 +22,15 @@
 </head>
 
 <body>
+{{-- Шаблон Blade --}}
 Показ строки таблицы<br><br>
-ID Задачи:{{ $id }}<br>
-Заголовок: {{ $title}}<br>
-Описание задачи: {{ $description }}<br>
-Дата создания: {{ $created_at }}<br>
-Дата изменения: {{ $updated_at }}
+ID: {{ $todo[0]->id}}<br>
+Заголовок:{{ $todo[0]->title}}<br>
+Описание задачи: {{ $todo[0]->description }}<br>
+Дата создания: {{ $todo[0]->created_at }}<br>
+Дата изменения: {{ $todo[0]->updated_at }}
+
+@foreach ($todo as $key => $el)
+    <div>Ключ: {{ $key }}, значение: {{ $el }}</div>
+@endforeach
 </body>
