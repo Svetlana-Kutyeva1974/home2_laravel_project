@@ -6,6 +6,7 @@ use App\Models\ToDo;
 use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Pagination\LengthAwarePaginator;
 //use App\Http\Controllers\DB;
 
 class ToDoController extends Controller
@@ -17,13 +18,8 @@ class ToDoController extends Controller
      */
     public function index()
     {
-        $todo = ToDo::all();
-        dump("Отладочная информация : ".$todo);
-        /*foreach($todo as $todoEl) {
-            dump($todoEl->title,$todoEl->description, $todoEl->id );
-        }*/
-         return view('todo.todo', compact('todo'));
-
+        $todo = ToDo::paginate(); // или : $todo =  DB::table('to_dos')->paginate();
+        return view('todo.todo', compact('todo'));
     }
 
     /**
@@ -33,11 +29,9 @@ class ToDoController extends Controller
      */
     public function create()
     {
-        Todo::create([
+        ToDo::create([
             'title' => 'Новая задача',
             'description' => 'Описание задачи ...',
-            'created_at' => date("Y-m-d H:i:s"),
-            'updated_at' => date("Y-m-d H:i:s"),
         ]);
         return redirect()->back();
     }
@@ -62,11 +56,11 @@ class ToDoController extends Controller
     //public function show(ToDo $toDo)
     public function show()
     {
-        $params = array(
+        $params = [
                  'title' => 'Стишок',
                  'var1' => 'Мы едем, едем, едем.',
                  'var2' => 'В далекие края...',
-              );
+          ];
         return view('example.example', $params);
     }
 

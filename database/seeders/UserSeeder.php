@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use Cassandra\Timestamp;
-use Illuminate\Database\DBAL\TimestampType;
+//use Cassandra\Timestamp;
+//use Illuminate\Database\DBAL\TimestampType;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 //use Illuminate\Support\Facades\Hash;
@@ -22,9 +22,9 @@ class UserSeeder extends Seeder
                    'id' => 1,
                    'title' => Str::random(10).'имя1',
                    'description' => Str::random(10).'описание1',
-                   'created_at' => '',
-                   'updated_at' => '',
-        //            'password' => Hash::make('password'),
+                   //'created_at' => '',
+                   // 'updated_at' => '',
+                   // 'password' => Hash::make('password'),
                 ]);
     }
 }
