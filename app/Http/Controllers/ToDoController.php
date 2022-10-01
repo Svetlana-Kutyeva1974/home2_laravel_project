@@ -14,25 +14,32 @@ class ToDoController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function index()
     {
         $todo = ToDo::paginate(); // или : $todo =  DB::table('to_dos')->paginate();
-        return view('todo.todo', compact('todo'));
+        return view(
+            'todo.todo',
+            [
+                'todo' => $todo
+            ]
+        ); //или : return view('todo.todo', compact('todo'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
     public function create()
     {
-        ToDo::create([
+        ToDo::create(
+            [
             'title' => 'Новая задача',
             'description' => 'Описание задачи ...',
-        ]);
+            ]
+        );
         return redirect()->back();
     }
 
@@ -51,7 +58,7 @@ class ToDoController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\ToDo  $toDo
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     //public function show(ToDo $toDo)
     public function show()
